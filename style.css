@@ -3,9 +3,8 @@ body {
   padding: 0;
   font-family: 'Poppins', sans-serif;
   text-align: center;
-  background-color: #fff;
+  background-color: #000;
   overflow: hidden;
-  transition: background 1.2s ease-in-out;
   position: relative;
 }
 
@@ -50,32 +49,36 @@ button:hover {
   opacity: 0;
 }
 
-/* Background cepat muncul */
+/* 🌸 Background instan & cepat di HP */
 .show-bg {
-  background-color: #000; /* warna sementara */
+  background-color: #000;
 }
 
 .show-bg::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("https://i.ibb.co.com/d9Vz6r6/Gambar-Whats-App-2025-10-08-pukul-13-18-46-83a150f9.jpg");
+  background-image: url("https://raw.githubusercontent.com/davaardana/web_miracle/main/bg.jpg");
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.95);
-  z-index: -1;
+  filter: brightness(0.95) blur(5px);
   opacity: 0;
-  animation: fadeInBg 0.8s ease-in forwards;
+  animation: fastFade 0.8s ease-out forwards, sharpen 2s ease-in forwards;
+  z-index: -1;
 }
 
-/* Fade-in agar terasa halus tapi cepat */
-@keyframes fadeInBg {
-  from { opacity: 0; transform: scale(1.03); }
-  to { opacity: 1; transform: scale(1); }
+/* fade cepat + hilangkan blur halus */
+@keyframes fastFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Halaman utama */
+@keyframes sharpen {
+  from { filter: brightness(0.95) blur(5px); }
+  to { filter: brightness(0.95) blur(0px); }
+}
+
 #mainContent {
   position: relative;
   width: 100%;
@@ -101,7 +104,6 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Kata melayang */
 .word {
   position: absolute;
   color: rgba(255, 255, 255, 0.85);

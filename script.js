@@ -17,27 +17,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const floatingWordsList = ["love", "you", "forever", "always", "dear", "Mentari", "💗", "🌸", "💞"];
 
-  // PRELOAD GAMBAR supaya cepat muncul
-  const bgImg = new Image();
-  bgImg.src = "https://i.ibb.co.com/d9Vz6r6/Gambar-Whats-App-2025-10-08-pukul-13-18-46-83a150f9.jpg";
+  // ✅ PRELOAD gambar supaya sudah siap di memory browser
+  const bg = new Image();
+  bg.src = "https://raw.githubusercontent.com/davaardana/web_miracle/main/bg.jpg";
 
   startBtn.addEventListener("click", () => {
-    intro.style.display = "none"; 
+    intro.style.display = "none";
     document.body.classList.add("show-bg");
     mainContent.classList.remove("hidden");
     mainContent.style.opacity = 1;
 
-    // Jalankan musik
+    // Musik fade-in
     music.volume = 0;
-    music.play().catch(() => {
-      console.log("Autoplay blocked, user must interact first.");
-    });
+    music.play().catch(() => console.log("Autoplay blocked"));
     fadeInMusic();
 
-    // Jalankan animasi teks
+    // Animasi teks & kata melayang
     showMessageLine(0);
-
-    // Kata melayang
     setInterval(createFloatingWord, 1200);
   });
 
@@ -47,21 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (vol < 0.25) {
         vol += 0.02;
         music.volume = vol;
-      } else {
-        clearInterval(fade);
-      }
+      } else clearInterval(fade);
     }, 200);
   }
 
-  // Menampilkan teks satu per satu huruf
   function showMessageLine(index) {
     if (index >= messageLines.length) return;
     let text = messageLines[index];
     let i = 0;
     const lineInterval = setInterval(() => {
       if (i < text.length) {
-        messageEl.textContent += text[i];
-        i++;
+        messageEl.textContent += text[i++];
       } else {
         clearInterval(lineInterval);
         messageEl.textContent += "\n";
@@ -70,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 60);
   }
 
-  // Kata-kata melayang
   function createFloatingWord() {
     const word = document.createElement("div");
     word.classList.add("word");
