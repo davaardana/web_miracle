@@ -3,9 +3,9 @@ body {
   padding: 0;
   font-family: 'Poppins', sans-serif;
   text-align: center;
-  background-color: white;
+  background-color: #fff;
   overflow: hidden;
-  transition: background 2s ease-in-out;
+  transition: background 1.2s ease-in-out;
   position: relative;
 }
 
@@ -50,9 +50,9 @@ button:hover {
   opacity: 0;
 }
 
-/* Efek background setelah tombol diklik */
+/* Background cepat muncul */
 .show-bg {
-  background: none;
+  background-color: #000; /* warna sementara */
 }
 
 .show-bg::before {
@@ -60,13 +60,19 @@ button:hover {
   position: fixed;
   inset: 0;
   background-image: url("https://i.ibb.co.com/d9Vz6r6/Gambar-Whats-App-2025-10-08-pukul-13-18-46-83a150f9.jpg");
-  background-size: 95% auto;
-  background-position: center top;
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
-  transform: scale(0.95);
-  filter: brightness(0.9) blur(0.3px);
+  filter: brightness(0.95);
   z-index: -1;
-  transition: transform 2s ease, filter 2s ease;
+  opacity: 0;
+  animation: fadeInBg 0.8s ease-in forwards;
+}
+
+/* Fade-in agar terasa halus tapi cepat */
+@keyframes fadeInBg {
+  from { opacity: 0; transform: scale(1.03); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* Halaman utama */
@@ -87,7 +93,7 @@ button:hover {
   color: #fff;
   text-shadow: 0 0 14px rgba(255, 182, 193, 0.9);
   max-width: 90%;
-  animation: fadeIn 3s ease-in-out;
+  animation: fadeIn 2.5s ease-in-out;
 }
 
 @keyframes fadeIn {

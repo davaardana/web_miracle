@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const floatingWordsList = ["love", "you", "forever", "always", "dear", "Mentari", "💗", "🌸", "💞"];
 
+  // PRELOAD GAMBAR supaya cepat muncul
+  const bgImg = new Image();
+  bgImg.src = "https://i.ibb.co.com/d9Vz6r6/Gambar-Whats-App-2025-10-08-pukul-13-18-46-83a150f9.jpg";
+
   startBtn.addEventListener("click", () => {
     intro.style.display = "none"; 
     document.body.classList.add("show-bg");
